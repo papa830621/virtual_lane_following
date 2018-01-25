@@ -1,33 +1,6 @@
 <robot
   name="mobile_bot">
   
-<gazebo reference="camera">
-    <material>Gazebo/Green</material>
-    <sensor name="camera_1" type="camera">
-      <update_rate>30</update_rate>
-      <camera name="head">
-        <horizontal_fov>1.7</horizontal_fov>
-        <image>
-          <width>1920</width>
-          <height>1440</height>
-          <format>R8G8B8</format>
-        </image>
-        <clip>
-          <near>0.1</near>
-          <far>200</far>
-        </clip>
-      </camera>
-      <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
-        <alwaysOn>true</alwaysOn>
-        <updateRate>0.0</updateRate>
-        <cameraName>david/camera_node</cameraName>
-        <imageTopicName>image/raw</imageTopicName>
-        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-        <frameName>camera</frameName>
-        <hackBaseline>0.07</hackBaseline>
-      </plugin>
-    </sensor>
-  </gazebo>
 
 
 
@@ -62,9 +35,7 @@
   <gazebo reference="aux_link">
     <material>Gazebo/Red</material>
   </gazebo>
-  <gazebo reference="camera">
-    <material>Gazebo/Green</material>>
-  </gazebo>
+
 
 
   <link
@@ -267,30 +238,5 @@
       xyz="0 1 0" />
   </joint>
 
-  <link name="camera">
-    <collision>
-      <origin rpy="0 0.1 0" xyz="0 0 0"/>
-      <geometry>
-        <box size="0.05 0.05 0.05"/>
-      </geometry>
-    </collision>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <box size="0.05 0.05 0.05"/>
-      </geometry>
-    </visual>
-    <inertial>
-      <mass value="0.1"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <box_inertia m="0.1" x="0.05" y="0.05" z="0.05"/>
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
-    </inertial>
-  </link>
-  <joint name="camera_joint" type="fixed">
-    <axis xyz="0 1 0"/>
-    <origin rpy="0 0.8 0" xyz=".35 0 .25"/>
-    <parent link="base_link"/>
-    <child link="camera"/>
-  </joint>
+
 </robot>
